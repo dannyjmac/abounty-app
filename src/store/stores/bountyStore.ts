@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { Bounty } from "../../model";
 import { Store } from "../store";
 
 export default class BountyStore {
@@ -10,13 +11,11 @@ export default class BountyStore {
     this._store = store;
   }
 
-  allBounties = null;
+  allBounties: Bounty[] | null = null;
 
   // Gets all bounties from the api
   async getAllBounties() {
     const data = await this._store.api.getBounties();
-    console.log({ data });
-    // this.allBounties =
-    // console.log({ allBounties: this.allBounties });
+    this.allBounties = data;
   }
 }

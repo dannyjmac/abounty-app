@@ -1,5 +1,5 @@
 import { Box, Grid, Heading } from "@chakra-ui/layout";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../store";
 
@@ -8,11 +8,11 @@ const ViewBounties = observer(() => {
 
   useEffect(() => {
     bountyStore.getAllBounties();
-  }, []);
-
-  console.log({ bountyStorez: bountyStore.allBounties });
+  }, [bountyStore]);
 
   if (!bountyStore.allBounties) return null;
+
+  console.log(bountyStore.allBounties);
 
   return (
     <Box m="40px auto" maxW="1200px" bg="red">
@@ -26,14 +26,11 @@ const ViewBounties = observer(() => {
           "repeat(4, 1fr)",
         ]}
       >
-        <Box p="3" border="1px" w="100%" h="10" bg="blue.500">
-          <Heading>Title</Heading>
-        </Box>
-        <Box border="1px" w="100%" h="10" bg="blue.500" />
-        <Box border="1px" w="100%" h="10" bg="blue.500" />
-        <Box border="1px" w="100%" h="10" bg="blue.500" />
-        <Box border="1px" w="100%" h="10" bg="blue.500" />
-        <Box border="1px" w="100%" h="10" bg="blue.500" />
+        {bountyStore.allBounties.map((bounty) => (
+          <Box p="3" border="1px" w="100%" h="10" bg="blue.500">
+            <Heading>{bounty.subject}</Heading>
+          </Box>
+        ))}
       </Grid>
     </Box>
   );

@@ -1,26 +1,26 @@
 import React, { FC } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Logo } from "./components/Logo";
 import ViewBounties from "./components/ViewBounties";
 import { createStore } from "./store/store";
+import { StoreProvider } from "./store";
+import { theme } from "./theme";
 
 const store = createStore();
 
 const App: FC = () => {
   return (
-    <div className="App">
-      <Box w="100vw" h="100vh" bg="#E5E1DB">
-        <header>
+    <StoreProvider store={store}>
+      <ChakraProvider theme={theme}>
+        <Box w="100vw" h="100vh" bg="#E5E1DB">
           <Box p="3">
             <Logo />
           </Box>
-        </header>
 
-        <main>
           <ViewBounties />
-        </main>
-      </Box>
-    </div>
+        </Box>
+      </ChakraProvider>
+    </StoreProvider>
   );
 };
 

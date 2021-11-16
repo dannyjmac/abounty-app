@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class API {
-  private apiUrl = process.env.API_URL;
+  private apiUrl = process.env.REACT_APP_API_URL;
 
   async getBounties() {
     try {
