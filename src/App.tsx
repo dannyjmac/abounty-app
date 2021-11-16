@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from "react";
+import { Box } from "@chakra-ui/react";
+import { Logo } from "./components/Logo";
+import ViewBounties from "./components/ViewBounties";
 
-function App() {
+const App: FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Box w="100vw" h="100vh" bg="#E5E1DB">
+        <header>
+          <Box p="3">
+            <Logo />
+          </Box>
+        </header>
+
+        <main>
+          <ViewBounties />
+        </main>
+      </Box>
     </div>
   );
-}
+};
 
 export default App;
