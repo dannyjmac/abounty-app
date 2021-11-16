@@ -2,6 +2,9 @@ import React, { FC } from "react";
 import { Box } from "@chakra-ui/react";
 import { Logo } from "./components/Logo";
 import ViewBounties from "./components/ViewBounties";
+import { createStore } from "./store/store";
+
+const store = createStore();
 
 const App: FC = () => {
   return (
