@@ -1,7 +1,9 @@
-import { Box, Grid, Heading } from "@chakra-ui/layout";
+import { Box, Grid } from "@chakra-ui/layout";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../store";
+import { BountyCard } from "./BountyCard";
+import { Bounty } from "../model";
 
 const ViewBounties = observer(() => {
   const { bountyStore } = useStore();
@@ -12,28 +14,79 @@ const ViewBounties = observer(() => {
 
   if (!bountyStore.allBounties) return null;
 
-  console.log(bountyStore.allBounties);
-
   return (
-    <Box m="40px auto" maxW="1200px" bg="red">
-      <Grid
-        templateColumns={[
-          "repeat(1, 1fr)",
-          "repeat(1, 1fr)",
-          "repeat(1, 1fr)",
-          "repeat(2, 1fr)",
-          "repeat(3, 1fr)",
-          "repeat(4, 1fr)",
-        ]}
+    <Box p={["0 0 0 20px", "0 0 0 20px", "0 0 0 20px", "50px"]} maxW="1200px">
+      <Box m="20px 0px">
+        <Box fontSize="20px">#Bitcoin</Box>
+        <Box
+          p="20px 0px"
+          css={scrollBar}
+          overflowX={["scroll", "scroll", "scroll", "visible"]}
+        >
+          <Grid
+            templateColumns={[
+              "repeat(999, 1fr)",
+              "repeat(999, 1fr)",
+              "repeat(999, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(4, 1fr)",
+            ]}
+            gap={5}
+          >
+            {bountyStore.allBounties.map((bounty: Bounty) => (
+              <BountyCard {...bounty} />
+            ))}
+          </Grid>
+        </Box>
+      </Box>
+      <Box fontSize="20px">#Climate</Box>
+      <Box
+        css={scrollBar}
+        p="20px 0px"
+        overflowX={["scroll", "scroll", "scroll", "visible"]}
       >
-        {bountyStore.allBounties.map((bounty) => (
-          <Box p="3" border="1px" w="100%" h="10" bg="blue.500">
-            <Heading>{bounty.subject}</Heading>
-          </Box>
-        ))}
-      </Grid>
+        <Box m="20px 0px">
+          <Grid
+            templateColumns={[
+              "repeat(999, 1fr)",
+              "repeat(999, 1fr)",
+              "repeat(999, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(4, 1fr)",
+            ]}
+            gap={5}
+          >
+            {bountyStore.allBounties.map((bounty: Bounty) => (
+              <BountyCard {...bounty} />
+            ))}
+          </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 });
+
+const scrollBar = {
+  scrollbarColor: "white black",
+  borderRadius: 0,
+  "&::-webkit-scrollbar": {
+    height: "14px",
+    backgroundColor: "white",
+    borderRadius: "20px",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "black",
+  },
+  "&::-webkit-scrollbar-track-piece": {
+    backgroundColor: "c2d2e4",
+  },
+  "&::-webkit-scrollbar-thumb:horizontal": {
+    borderRadius: "30px",
+    margin: "3px",
+    background: "white",
+  },
+};
 
 export default ViewBounties;

@@ -1,3 +1,9 @@
+import "@fontsource/rye/400.css";
+import "@fontsource/rubik/700.css";
+import "@fontsource/rubik/600.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/400.css";
+
 import React, { FC } from "react";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Logo } from "./components/Logo";

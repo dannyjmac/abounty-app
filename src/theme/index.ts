@@ -9,4 +9,22 @@ const colors = {
   },
 };
 
-export const theme = extendTheme({ colors });
+const fonts = {
+  heading: "Rye",
+  body: "Rubik",
+};
+
+const textStyles = {
+  caption: {
+    fontWeight: 700,
+  },
+  paragraph: {
+    display: "none",
+    fontWeight: 700,
+  },
+  h1: {
+    fontFamily: "Rye",
+  },
+};
+
+export const theme = extendTheme({ colors, fonts, textStyles });
